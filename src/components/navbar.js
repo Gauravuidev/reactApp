@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import {Home} from './home';
 import homeIcon from '../img/homeicon.svg';
 import {Radio} from './radio';
@@ -22,6 +22,7 @@ export class Navbar extends Component {
 
   render() {
     return (
+      <Router>
         <div className="routing">
           <nav className="clearfix">
               <ul>
@@ -67,7 +68,15 @@ export class Navbar extends Component {
                   </li>
               </ul>
           </nav>
+          <Switch>
+                  <Route exact path='/' component={Home} open={this.state.open}/>
+                  <Route exact path='/Discover' component={Discover} />
+                  <Route exact path='/Radio' component={Radio} />
+                  <Route exact path='/Browse' component={Browse} />
+                  <Route exact path='/Mymusic' component={Mymusic} />
+               </Switch>
             </div>
+        </Router>
   );
 }
 }
